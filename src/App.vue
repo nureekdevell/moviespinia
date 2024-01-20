@@ -4,11 +4,16 @@
     <img src="./video-player.png" class="header-logo" alt="">
     <h2><b>My Favorite Movies</b> </h2>
   </header>
-  <div class="movies">
+  <div class="tabs">
+    <button :class="['btn', {btn_green: movieStore.activeTab === 1}]"> Favorite</button>
+    <button :class="['btn', {btn_green: movieStore.activeTab === 2}]">Search</button>
+  </div>
+  <div class="movies" v-if="movieStore.activeTab === 1">
     <h2>All Movies</h2>
     <Movie v-for="movie of movieStore.movies" :key="movie.id" :movie="movie"  />
 
   </div>
+  <div class="search" v-else>Search</div>
 </main>
 </template>
 
